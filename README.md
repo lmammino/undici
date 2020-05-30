@@ -300,6 +300,12 @@ some kind of transformation needs to be performed based on e.g.
 The `handler` should validate the response and save any
 required state. If there is an error it should be thrown.
 
+Returns a `Duplex` which writes to the request and reads from
+the response. Note that the callbacks for
+`Duplex.write(..., callback)` and `Duplex.end(callback)` does
+not necessarily indicate that the data has been written to the
+socket or that the socket has been flushed.
+
 ```js
 const { Client } = require('undici')
 const client = new Client(`http://localhost:3000`)
